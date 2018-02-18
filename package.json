@@ -4,7 +4,7 @@
   "description": "multi-page markdown-based wiki, sibling of theodora",
   "main": "index.js",
   "scripts": {
-    "test": "set DEBUG=theodore:* & npm start"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
