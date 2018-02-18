@@ -3,7 +3,7 @@
 
 By making the wiki multi-page, the design can be simpler, the implementation and use can be more straight-forward, and the pages can be indexed by search engines.
 
-## Todo
+## todo
 
 - write the back-end to receive requests and serve files
 - transform markdown files into html before serving

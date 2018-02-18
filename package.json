@@ -1,0 +1,27 @@
+{
+  "name": "theodore",
+  "version": "0.0.1",
+  "description": "multi-page markdown-based wiki, sibling of theodora",
+  "main": "index.js",
+  "scripts": {
+    "test": "set DEBUG=theodore:* & npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flux2341/theodore.git"
+  },
+  "keywords": [
+    "wiki",
+    "markdown"
+  ],
+  "author": "flux2341",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/flux2341/theodore/issues"
+  },
+  "homepage": "https://github.com/flux2341/theodore#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "nunjucks": "^3.0.1"
+  }
+}
