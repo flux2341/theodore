@@ -1,5 +1,7 @@
 
-# Home Page
+
+
+# Title
 
 This is the homepage.
 - [sibling link](sibling.md)
@@ -7,7 +9,28 @@ This is the homepage.
 
 ![test image](test_image.png)
 
+## Chapter 1
 
+### Part 1
 
+### Part 2
+
+### Part 3
+
+## Chapter 2
+
+### Part 1
+
+### Part 2
+
+### Part 3
+
+## Chapter 3
+
+### Part 1
+
+### Part 2
+
+### Part 3
 
 

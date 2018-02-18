@@ -22,6 +22,7 @@
   "homepage": "https://github.com/flux2341/theodore#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "marked": "^0.3.14",
     "nunjucks": "^3.0.1"
   }
 }
