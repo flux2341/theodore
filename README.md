@@ -3,9 +3,14 @@
 
 By making the wiki multi-page, the design can be simpler, the implementation and use can be more straight-forward, and the pages can be indexed by search engines.
 
+Build with [express.js](https://expressjs.com/), [nunjucks](https://mozilla.github.io/nunjucks/), and [marked](https://github.com/markedjs/marked).
+
+## features
+
+- browse markdown files
+- table of contents (backend completed)
+- file list (backend completed)
+
 ## todo
 
-- write the back-end to receive requests and serve files
-- transform markdown files into html before serving
-- find an easy way to inject the rendered html into a template, jade? nunjucks?
-- side nav - table of contents and file list
+- front-end with style, table of contents, and file list
