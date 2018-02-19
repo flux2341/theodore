@@ -52,18 +52,16 @@ function get_headings(markdown) {
 
     let heading_regex = /^#+(?!#)(.*)/gm;
     let match;
-    let headings = []
+    let headings = [];
     while ((match = heading_regex.exec(markdown)) !== null) {
 
         // count the leading number of hash-tags
         // todo: this will count all occurrences of #, "#Title #1" will be interpreted as h2
-        let heading_level = match[0].match(/#/g).length;
-
-        //console.log(heading_level + ' ' + match[0]);
+        let level = match[0].match(/#/g).length;
 
         headings.push({
-            heading_level: heading_level,
-            text: match[1]
+            level: level,
+            text: match[1].trim()
         });
     }
 
@@ -83,21 +81,21 @@ app.get('/*.md', function(req, res) {
     //
     // }
     let result = '';
+    let headings = [];
+    let files = [];
     try {
         let markdown = fs.readFileSync(writing_folder+req.path, 'utf8');
-        get_headings(markdown);
         result = marked(markdown);
         result = new nunjucks.runtime.SafeString(result);
 
-        let file_list = find_markdown();
-        console.log(file_list);
-
+        files = find_markdown();
+        headings = get_headings(markdown);
 
     } catch(e) {
         console.log('error:', e.stack);
         result = e.stack.toString();
     }
-    res.render('index.html', {message: result});
+    res.render('index.html', {content: result, files:files, headings:headings});
 });
 
 // app.get('*', function(req, res) {

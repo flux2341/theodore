@@ -3,9 +3,116 @@
     <head>
         <meta name="author" content="flux2341"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <style>
+            article {
+                max-width:500px;
+                margin: 0 auto;
+            }
+            body {
+                background-color: black;
+                color: lightgrey;
+                font-family: "Open Sans Light", sans-serif;
+            }
+            a {
+                text-decoration: none;
+                color: lightyellow;
+            }
+            a:active { color:lightyellow; }
+            a:visited { color:palegoldenrod; }
+            a:hover { color:goldenrod; }
+
+            /* https://stackoverflow.com/questions/6140430/what-are-the-most-common-font-sizes-for-h1-h6-tags */
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.17em; }
+            h4 { font-size: 1.12em; }
+            h5 { font-size: .83em; }
+            h6 { font-size: .75em; }
+
+
+
+
+            #toc_div, #file_div, #bt_div {
+                display:flex;
+                flex-direction:column;
+                position:fixed;
+                left:1em;
+                top:1em;
+                padding:2px;
+            }
+
+            #bt_div > a {
+                margin:4px;
+                opacity:0.1;
+            }
+
+            #bt_div > a:hover {
+                opacity:1;
+            }
+
+            #toc_div, #file_div {
+                display:none;
+            }
+
+            #toc_close_bt, #file_close_bt {
+                position:absolute;
+                left:105%;
+            }
+
+            #toc_close_bt > svg, #file_close_bt > svg {
+                width:10px;
+            }
+
+
+        </style>
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+        <script>
+            $(function() {
+                $('#toc_open_bt').on('click', function() {
+                    $('#bt_div').fadeOut();
+                    $('#toc_div').css("display", "flex").hide().fadeIn();
+                });
+                $('#file_open_bt').on('click', function() {
+                    $('#bt_div').fadeOut();
+                    $('#file_div').css("display", "flex").hide().fadeIn();
+                });
+                $('#toc_close_bt').on('click', function() {
+                    $('#toc_div').fadeOut();
+                    $('#bt_div').css("display", "flex").hide().fadeIn();
+                });
+                $('#file_close_bt').on('click', function() {
+                    $('#file_div').fadeOut();
+                    $('#bt_div').css("display", "flex").hide().fadeIn();
+                });
+            });
+        </script>
     </head>
     <body>
-        {{message}}
+        <article>
+            {{content}}
+        </article>
+        <aside>
+            <div id="bt_div">
+                <a id="toc_open_bt" href="#"><i class="fas fa-bars"></i></a>
+                <a id="file_open_bt" href="#"><i class="far fa-file"></i></a>
+            </div>
+            <div id="toc_div">
+                <a id="toc_close_bt" href="#"><i class="fas fa-times"></i></a>
+                {% for heading in headings %}
+                <a href="#{{heading.text.toLowerCase().replace(' ', '-')}}" style="padding-left:{{heading.level*10}}px">{{heading.text}}</a>
+                {% endfor %}
+            </div>
+            <div id="file_div">
+                <a id="file_close_bt" href="#"><i class="fas fa-times"></i></a>
+                {% for file in files %}
+                <a href="{{file}}">{{file}}</a>
+                {% endfor %}
+            </div>
+        </aside>
     </body>
 </html>
 
